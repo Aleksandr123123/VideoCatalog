@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <script src="http://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <div>
+        <nav aria-label="Статьи по Bootstrap 4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="#">Предыдущая</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Следующая</a></li>
+            </ul>
+        </nav>
+    </div>
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th>
+                    <b>Название </b>
+                </th>
+                <th>
+                    <b>Описание </b>
+                </th>
+                <th>
+                    <b>Дата выпуска </b>
+                </th>
+                <th>
+                    <b>Режисёр</b>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody class="searchable">
+            <tr class="danger">
+                <td>1</td>
+                <td>Яйца</td>
+                <td>Круглые</td>
+            </tr>
+            <tr class="danger">
+                <td>2</td>
+                <td>Куры</td>
+                <td>Птицы</td>
+            </tr>
+            <tr class="danger">
+                <td>3</td>
+                <td>Гуси</td>
+                <td>Плавающие</td>
+            </tr>
+        </tbody>
+    </table>
+   
+</div>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+</script>

@@ -1,0 +1,79 @@
+﻿@model PresentationLayer.Models.IndexFilmViewModel 
+@using VideoCatalog.Helpers
+@{
+    ViewData["Title"] = "Home Page";
+}
+@using Microsoft.AspNetCore.Identity
+@using Persist.Entityes 
+@inject UserManager<ApplicationUser> UserManager 
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div >
+            <a class="btn btn-primary" style="margin-bottom: 10px" asp-action="CreateFilm" asp-controller="Film">Create</a>
+
+        </div>
+    }
+        <link rel="stylesheet" href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+        <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+        <script src="http://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-default">
+                    <table class="table table-fixed">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <b>Название </b>
+                                </th>
+                                <th>
+                                    <b>Описание </b>
+                                </th>
+                                <th>
+                                    <b>Дата выпуска </b>
+                                </th>
+                                <th>
+                                    <b>Режисёр</b>
+                                </th>
+                                <th> </th>
+                                <th> </th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody class="searchable">
+                            @foreach (var item in Model.Films)
+                            {
+                                <tr class="danger">
+                                    <td>@item.Name</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.YearManufacture</td>
+                                    <td>@item.RegisseurName</td>
+                                    <td><li><a asp-action="SingleFilm" asp-controller="Film" asp-route-filmId="@item.Id">Open</a></li></td>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        @if (item.UserId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value)
+                                        {
+                                            <td><a asp-action="UpdateFilm" asp-controller="Film" asp-route-filmId="@item.Id">Edit</a></td>
+                                        }
+                                    }
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group">
+            @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+        </div>
+    </div>
+<script> 
+</script>

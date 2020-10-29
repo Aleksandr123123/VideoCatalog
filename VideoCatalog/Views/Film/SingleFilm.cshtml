@@ -1,0 +1,61 @@
+﻿@model PresentationLayer.Models.FilmViewModel
+@{
+    var photoPath = "/Images/" + (Model.Poster ?? "");
+}
+<br>
+<br>
+<br>
+
+<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<style> 
+    pre {
+        position: relative;
+        margin: 15px 0;
+        padding: 39px 19px 14px;
+        background-color: white;
+        border: 1px solid #DDD;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+    img {
+        max-width: 350px;
+        max-height: 350px;
+        width: 350px;
+        height: 350px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div>
+            <h2 class="text-center"> Название фильма @Model.Name - Режисёр @Model.RegisseurName</h2>
+        </div>
+        <div style="margin: 0 auto">
+
+            <p><img src="@photoPath"></p>
+            @if (User.Identity.IsAuthenticated)
+            {
+                @if (Model.UserId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value)
+                {
+                    <div>
+                        <a class="btn btn-primary"  asp-action="UpdateFilm" asp-controller="Film" asp-route-filmId="@Model.Id">Edit</a>
+                    </div>
+                }
+            }
+        </div>
+        <div class="col-md-6">
+            <h3>Описание</h3>
+            <p>
+                @Model.Description
+            </p>
+            <p>
+                Дата выпуска - @Model.YearManufacture
+            </p>
+        </div>
+
+
+    </div>
+</div>
+<script> 
+</script>
