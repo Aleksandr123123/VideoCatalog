@@ -29,7 +29,7 @@ namespace Persist
             await _context.Database.MigrateAsync().ConfigureAwait(false);
             if (!await _context.Users.AnyAsync())
             { 
-                ApplicationUser user = new ApplicationUser (){Email = "user@mail.ru", UserName = "user@mail.ru", FullName = "user" };
+                ApplicationUser user = new ApplicationUser (){Email = "user@mail.ru", UserName = "user@mail.ru", FullName = "user", EmailConfirmed = true };
                 List<Regisseur> regisseurs = new List<Regisseur>()
                 {
                     new Regisseur() {Id = Guid.NewGuid(), Name = "Ricardo Torell" },
