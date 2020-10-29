@@ -44,7 +44,7 @@ namespace Persist
                     User = user
                 };
                     
-                await _userManager.CreateAsync(user, "1234"); 
+                await _userManager.CreateAsync(user, "!123zZ"); 
 
                 try
                 {  
