@@ -12,7 +12,7 @@ namespace Persist.Entityes
         [Required]
         public string Name { get; set; }
         public string Description { get; set; }
-        public DateTimeOffset YearManufacture { get; set; }
+        public int YearManufacture { get; set; }
         public string Poster { get; set; }
         public Guid RegisseurId { get; set; }
         public string UserId { get; set; }
